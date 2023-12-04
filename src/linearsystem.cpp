@@ -1,6 +1,7 @@
 #include "linearsystem.h"
+#include <iomanip>
 #include <iostream>
-using std::cout, std::cin;
+using std::cout, std::cin, std::fixed, std::setprecision, std::defaultfloat;
 
 LinearSystem::~LinearSystem() {}
 
@@ -164,8 +165,8 @@ vector<double> LinearSystem::LDP()
 
 void LinearSystem::outputData()
 {
-    cout << "------------\n";
-    cout << "L matrix\n";
+    cout << fixed << setprecision(1);
+    cout << "---L MATRIX---\n";
     for (auto i = 0; i < order; ++i)
     {
         for (auto j = 0; j < order; ++j)
@@ -175,8 +176,7 @@ void LinearSystem::outputData()
         cout << '\n';
     }
 
-    cout << "------------\n";
-    cout << "U matrix\n";
+    cout << "---U MATRIX---\n";
     for (auto i = 0; i < order; ++i)
     {
         for (auto j = 0; j < order; ++j)
@@ -186,9 +186,8 @@ void LinearSystem::outputData()
         cout << '\n';
     }
 
-    cout << "------------\n";
+    cout << "---P MATRIX---\n";
 
-    cout << "P matrix\n";
     for (auto i = 0; i < order; ++i)
     {
         for (auto j = 0; j < order; ++j)
@@ -198,9 +197,8 @@ void LinearSystem::outputData()
         cout << '\n';
     }
 
-    cout << "------------\n";
+    cout << "---D MATRIX---\n";
 
-    cout << "D matrix\n";
     for (auto i = 0; i < order; ++i)
     {
         for (auto j = 0; j < order; ++j)
@@ -210,6 +208,7 @@ void LinearSystem::outputData()
         cout << '\n';
     }
 
+    cout << fixed << setprecision(-1);
     cout << "------- RESULTS -------:\n";
     vector<double> output{LU()};
 
